@@ -1,5 +1,5 @@
 import React from 'react';
-import { Form, Input, Radio, Slider, Row, Col, Card } from 'antd';
+import { Form, Input, Radio, Slider, Row, Col, Card, Spin } from 'antd';
 import SearchResults from './SearchResults';
 import callApi from '../utils/apiCaller';
 import './FindPeople.css';
@@ -11,6 +11,9 @@ class FindPeopleForm extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
+      loading: false,
+      searchName: '',
+      gender: 'both',
       ageRange: [this.defaultMinAge, this.defaultMaxAge],
       maxAgeText: `${this.defaultMaxAge}`,
     };
@@ -53,10 +56,18 @@ class FindPeopleForm extends React.Component {
   }
 
   newSearch = () => {
+    this.setState({
+      loading: true,
+    });
     callApi('people')
       .then((res) => {
         this.setState({
           searchResults: res,
+        });
+      })
+      .then(() => {
+        this.setState({
+          loading: false,
         });
       });
   };
@@ -87,7 +98,7 @@ class FindPeopleForm extends React.Component {
               {...formItemLayout}
               label="Gender"
             >
-              <RadioGroup defaultValue="both" onChange={this.onChangeGender}>
+              <RadioGroup defaultValue={this.state.gender} onChange={this.onChangeGender}>
                 <Radio value="both">Both</Radio>
                 <Radio value="male">Male</Radio>
                 <Radio value="female">Female</Radio>
@@ -112,7 +123,9 @@ class FindPeopleForm extends React.Component {
         <Card>
           <Row>
             <Col span={16} offset={6}>
-              <SearchResults data={this.state.searchResults} />
+              <Spin spinning={this.state.loading}>
+                <SearchResults data={this.state.searchResults} />
+              </Spin>
             </Col>
           </Row>
         </Card>
