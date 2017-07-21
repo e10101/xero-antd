@@ -16,29 +16,37 @@ class FindPeopleForm extends React.Component {
       gender: 'both',
       ageRange: [this.defaultMinAge, this.defaultMaxAge],
       maxAgeText: `${this.defaultMaxAge}`,
+      searchResults: [],
     };
+  }
+  componentDidMount() {
+    this.newSearch();
   }
   onAfterChangeAge = (value) => {
     const max = value[1];
     this.setState({
       ageRange: value,
       maxAgeText: this.getMaxAgeText(max),
-    });
-    this.newSearch();
+    },
+      this.newSearch,
+    );
   }
 
   onSearchName = (text) => {
     this.setState({
       searchName: text,
-    });
-    this.newSearch();
+    },
+      this.newSearch,
+    );
   }
 
-  onChangeGender = (value) => {
+  onChangeGender = (e) => {
+    console.log('onGender', e.target.value);
     this.setState({
-      gender: value,
-    });
-    this.newSearch();
+      gender: e.target.value,
+    },
+      this.newSearch,
+    );
   }
 
   getMaxAgeText = (value) => {
@@ -59,13 +67,23 @@ class FindPeopleForm extends React.Component {
     this.setState({
       loading: true,
     });
-    callApi('people')
+    callApi('people/fetch', 'post', {
+      gender: this.state.gender,
+      ageMin: this.state.ageRange[0],
+      ageMax: this.state.ageRange[1],
+      name: this.state.searchName,
+    })
       .then((res) => {
         this.setState({
           searchResults: res,
         });
       })
       .then(() => {
+        this.setState({
+          loading: false,
+        });
+      })
+      .catch(() => {
         this.setState({
           loading: false,
         });

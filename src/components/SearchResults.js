@@ -1,5 +1,5 @@
 import React from 'react';
-import { Table, Icon } from 'antd';
+import { Table, Icon, Popconfirm } from 'antd';
 
 const columns = [{
   title: 'Name',
@@ -14,46 +14,55 @@ const columns = [{
   title: 'Gender',
   dataIndex: 'gender',
   key: 'gender',
-}, {
-  title: 'Action',
-  key: 'action',
-  render: (text, record) => (
-    <span>
-      <a href="#">Action 一 {record.name}</a>
-      <span className="ant-divider" />
-      <a href="#">Delete</a>
-      <span className="ant-divider" />
-      <a href="#" className="ant-dropdown-link">
-        More actions <Icon type="down" />
-      </a>
-    </span>
-  ),
-}];
+},
+// , {
+//   title: 'Action',
+//   key: 'action',
+//   render: (text, record) => (
+//     <span>
+//       <a href="#">Action 一 {record.name}</a>
+//       <span className="ant-divider" />
+//       <Popconfirm title="Are you sure you want to delete?" onConfirm={this.deleteConfirm} okText="Yes" cancelText="No">
+//         <a href="#">Delete</a>
+//       </Popconfirm>
+//       <span className="ant-divider" />
+//       <a href="#" className="ant-dropdown-link">
+//         More actions <Icon type="down" />
+//       </a>
+//     </span>
+//   ),
+// }
+];
 
-const data = [{
-  key: '1',
-  name: 'John Brown',
-  age: 32,
-  gender: 'Male',
-}, {
-  key: '2',
-  name: 'Jim Green',
-  age: 42,
-  gender: 'Female',
-}, {
-  key: '3',
-  name: 'Joe Black',
-  age: 32,
-  gender: 'Female',
-}];
+// const data = [{
+//   key: '1',
+//   name: 'John Brown',
+//   age: 32,
+//   gender: 'Male',
+// }, {
+//   key: '2',
+//   name: 'Jim Green',
+//   age: 42,
+//   gender: 'Female',
+// }, {
+//   key: '3',
+//   name: 'Joe Black',
+//   age: 32,
+//   gender: 'Female',
+// }];
 
 export default class SearchResults extends React.Component {
+  deleteConfirm = () => {
+    console.log('delete confirm');
+  };
+
   render() {
     return (
       <Table
         rowKey="_id"
         columns={columns}
         dataSource={this.props.data}
+        loading={this.props.loading}
         pagination={false}
         locale={{ emptyText: 'No data' }}
       />
@@ -63,6 +72,7 @@ export default class SearchResults extends React.Component {
 
 SearchResults.propTypes = {
   data: React.PropTypes.arrayOf(React.PropTypes.object).isRequired,
+  loading: React.PropTypes.bool.isRequired,
 };
 
 // export default function SearchResults() {
