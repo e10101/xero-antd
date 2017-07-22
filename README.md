@@ -15,7 +15,7 @@ mongodb://user:pass@ds035633.mlab.com:35633/jack
 
 ## Run
 ```
-npm install
+yarn install
 npm start
 ```
 OR
@@ -23,6 +23,8 @@ OR
 yarn install
 yarn start
 ```
+
+*Please use `yarn install` to install the dependencies, the `npm install` will cause compile problem. still trying to fix this problem.*
 
 Now the front-end should run at [http://localhost:3000/](http://localhost:3000/) and the backend should run at [http://localhost:8000/api/](http://localhost:8000/api/)
 
@@ -78,4 +80,7 @@ Failed to compile.
 ./~/antd/es/version/index.js
 2:15-22 '../../package.json' does not contain an export named 'version'.
 ```
-https://docs.npmjs.com/cli/install
+Run `yarn start` ok, but `npm start` did not work. check the `npm` version 5.3. then reinstall `node`.
+ - https://docs.npmjs.com/cli/install
+ - https://stackoverflow.com/questions/11177954/how-do-i-completely-uninstall-node-js-and-reinstall-from-beginning-mac-os-x
+ - https://docs.npmjs.com/troubleshooting/try-clearing-the-npm-cache

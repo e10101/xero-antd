@@ -61,9 +61,11 @@ class FindPeopleForm extends React.Component {
       name: this.state.searchName,
     })
       .then((res) => {
-        this.setState({
-          searchResults: res,
-        });
+        if (Array.isArray(res)) {
+          this.setState({
+            searchResults: res,
+          });
+        }
       })
       .then(() => {
         this.setState({
