@@ -15,12 +15,13 @@
     "react-scripts": "1.0.10"
   },
   "scripts": {
-    "dev": "nodemon server/server.js | react-scripts start",
-    "start": "react-scripts start",
+    "start": "nodemon server/server.js | react-scripts start",
     "build": "react-scripts build",
     "test": "jest --env=jsdom",
     "eject": "react-scripts eject",
-    "server": "nodemon server/server.js"
+    "client": "react-scripts start",
+    "server": "nodemon server/server.js",
+    "package": "rm ~/Downloads/refactionjs.zip && zip ~/Downloads/refactionjs.zip *.md *.json *.js *.hbs"
   },
   "devDependencies": {
     "babel-core": "^6.25.0",

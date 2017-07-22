@@ -1,5 +1,38 @@
 # Xero Task
 
+This project based on React / Express (API) / MongoDB.
+## Setup
+Because this project is based on MongoDB, you can run `mongod` on `localhost:27017`, OR
+
+Set the `MONGO_URL` environment variables to your MongoDB  database, for example (my mLab):
+```
+export MONGO_URL=mongodb://user:pass@ds035633.mlab.com:35633/jack
+```
+run `echo $MONGO_URL` to check your settings:
+```
+mongodb://user:pass@ds035633.mlab.com:35633/jack
+```
+
+## Run
+```
+npm install
+npm start
+```
+OR
+```
+yarn install
+yarn start
+```
+
+Now the front-end should run at [http://localhost:3000/](http://localhost:3000/) and the backend should run at [http://localhost:8000/api/](http://localhost:8000/api/)
+
+## Test
+```
+npm test
+```
+
+## PROBLEM SOLVE PROGRESS
+
 ## ESLint
  - http://eslint.org/docs/rules/class-methods-use-this
 
@@ -37,3 +70,12 @@ matchMedia not present, legacy browsers require a polyfill
  - https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/Arrow_functions
  - https://stackoverflow.com/questions/39495306/arrow-function-is-considered-unexpected-token-in-react-component-using-babel
  - https://babeljs.io/docs/plugins/transform-class-properties/
+
+### npm start
+```
+Failed to compile.
+
+./~/antd/es/version/index.js
+2:15-22 '../../package.json' does not contain an export named 'version'.
+```
+https://docs.npmjs.com/cli/install
