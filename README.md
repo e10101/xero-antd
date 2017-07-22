@@ -73,7 +73,7 @@ matchMedia not present, legacy browsers require a polyfill
  - https://stackoverflow.com/questions/39495306/arrow-function-is-considered-unexpected-token-in-react-component-using-babel
  - https://babeljs.io/docs/plugins/transform-class-properties/
 
-### npm start
+## npm start
 ```
 Failed to compile.
 
@@ -84,3 +84,23 @@ Run `yarn start` ok, but `npm start` did not work. check the `npm` version 5.3. 
  - https://docs.npmjs.com/cli/install
  - https://stackoverflow.com/questions/11177954/how-do-i-completely-uninstall-node-js-and-reinstall-from-beginning-mac-os-x
  - https://docs.npmjs.com/troubleshooting/try-clearing-the-npm-cache
+
+## npm test
+```
+  console.error node_modules/fbjs/lib/warning.js:36
+    Warning: Failed prop type: Invalid prop `data` of type `object` supplied to `SearchResults`, expected an array.
+        in SearchResults (created by FindPeopleForm)
+        in FindPeopleForm (created by Unknown)
+        in Unknown (created by Form(WrappedComponent))
+        in Form(WrappedComponent) (created by App)
+        in div (created by App)
+        in div (created by Basic)
+        in Basic (created by Adapter)
+        in Adapter (created by App)
+        in div (created by Basic)
+        in Basic (created by Adapter)
+        in Adapter (created by App)
+        in div (created by App)
+        in App
+```
+Check the fetch data type, if array then update state.
