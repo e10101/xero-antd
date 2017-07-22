@@ -2,6 +2,7 @@ import React from 'react';
 import { Form, Input, Radio, Slider, Row, Col, Card, Spin } from 'antd';
 import SearchResults from './SearchResults';
 import callApi from '../utils/apiCaller';
+import Formatter from '../utils/formatter';
 import './FindPeople.css';
 
 const FormItem = Form.Item;
@@ -26,7 +27,7 @@ class FindPeopleForm extends React.Component {
     const max = value[1];
     this.setState({
       ageRange: value,
-      maxAgeText: this.getMaxAgeText(max),
+      maxAgeText: Formatter.getAgeText(max),
     },
       this.newSearch,
     );
@@ -47,20 +48,6 @@ class FindPeopleForm extends React.Component {
     },
       this.newSearch,
     );
-  }
-
-  getMaxAgeText = (value) => {
-    if (value === 100) {
-      return '∞';
-    }
-    return `${value}`;
-  }
-
-  ageTipFormatter = (value) => {
-    if (value === 100) {
-      return '∞';
-    }
-    return value;
   }
 
   newSearch = () => {
@@ -131,7 +118,7 @@ class FindPeopleForm extends React.Component {
                 range
                 defaultValue={this.state.ageRange}
                 onAfterChange={this.onAfterChangeAge}
-                tipFormatter={this.ageTipFormatter}
+                tipFormatter={Formatter.getAgeText}
                 marks={{ 0: '0', 18: '18', 25: '25', 35: '35', 45: '45', 60: '60', 80: '80', 100: '∞' }}
               />
             </FormItem>

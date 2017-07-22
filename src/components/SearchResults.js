@@ -62,7 +62,6 @@ export default class SearchResults extends React.Component {
         rowKey="_id"
         columns={columns}
         dataSource={this.props.data}
-        loading={this.props.loading}
         pagination={false}
         locale={{ emptyText: '😥 No data' }}
       />
@@ -72,7 +71,6 @@ export default class SearchResults extends React.Component {
 
 SearchResults.propTypes = {
   data: React.PropTypes.arrayOf(React.PropTypes.object).isRequired,
-  loading: React.PropTypes.bool.isRequired,
 };
 
 // export default function SearchResults() {
