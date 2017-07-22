@@ -21,7 +21,7 @@
     "eject": "react-scripts eject",
     "client": "react-scripts start",
     "server": "nodemon server/server.js",
-    "package": "rm ~/Downloads/refactionjs.zip && zip ~/Downloads/refactionjs.zip *.md *.json *.js *.hbs"
+    "package": "rm -f xero-antd.zip && zip -r xero-antd.zip ./ -x .git/\\* -x build/\\* -x node_modules/\\*"
   },
   "devDependencies": {
     "babel-core": "^6.25.0",

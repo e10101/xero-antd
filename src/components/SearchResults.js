@@ -70,7 +70,7 @@ export default class SearchResults extends React.Component {
 }
 
 SearchResults.propTypes = {
-  data: React.PropTypes.arrayOf(React.PropTypes.object).isRequired,
+  data: React.PropTypes.array.isRequired,
 };
 
 // export default function SearchResults() {
