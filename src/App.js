@@ -11,7 +11,7 @@ function App() {
       <Layout className="layout">
         <div>
           <div id="logo">
-            <img src="https://www.xero.com/etc/designs/xero-cms/clientlib/assets/img/logo/logo-xero-blue.svg" alt="Xero" />
+            <img src="//www.xero.com/etc/designs/xero-cms/clientlib/assets/img/logo/logo-xero-blue.svg" alt="Xero" />
           </div>
           <Menu
             mode="horizontal"

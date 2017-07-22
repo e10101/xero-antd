@@ -91,7 +91,7 @@ class FindPeopleForm extends React.Component {
   };
 
   defaultMaxAge = 60;
-  defaultMinAge = 18;
+  defaultMinAge = 29;
 
   render() {
     const formItemLayout = {

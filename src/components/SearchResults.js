@@ -1,11 +1,11 @@
 import React from 'react';
-import { Table, Icon, Popconfirm } from 'antd';
+import { Table } from 'antd';
 
 const columns = [{
   title: 'Name',
   dataIndex: 'name',
   key: 'name',
-  render: text => <a href="#">{text}</a>,
+  render: text => <strong>{text}</strong>,
 }, {
   title: 'Age',
   dataIndex: 'age',
@@ -64,7 +64,7 @@ export default class SearchResults extends React.Component {
         dataSource={this.props.data}
         loading={this.props.loading}
         pagination={false}
-        locale={{ emptyText: 'No data' }}
+        locale={{ emptyText: '😥 No data' }}
       />
     );
   }
